@@ -1,7 +1,8 @@
 import React from 'react'
-
-export default function TodoItem( { children }) {
+import './todo.css'
+export default function TodoItem( { children, change, status }) {
     return (
-        <li>{ children }</li>
+        <li
+        className={status ? "done" : ''} onClick = {change}>{ children }</li>
     )
 }

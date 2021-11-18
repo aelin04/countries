@@ -10,6 +10,8 @@ function App() {
   // Cоздаем хук состояния для хранения обьектов
   const [todos, setTodos] = useState ([])
 
+  const [status, setStatus] = useState(false)
+
   const addTask = () => {
    if(inpData) {
     const newObj = {
@@ -22,10 +24,14 @@ function App() {
    setInpData('')
   }
  
-  const deleteTask = (index) => {
-    
+  function deleteTask (id) { 
+    setTodos(todos.filter(task => task.id !== id))
   }
-  console.log(todos);
+
+  function change () {
+    setStatus(!status)
+  }
+
   return (
     <div className="App">
      <AddTodo 
@@ -34,6 +40,8 @@ function App() {
      addTask = {addTask}
      />
      <Todolist 
+     status = {status}
+     change = {change}
      todos = {todos}
      deleteTask ={deleteTask}
      />
